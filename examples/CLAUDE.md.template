@@ -1,0 +1,79 @@
+# About <Your name> / <Company>
+
+User: <name>, <role> at <company>. Builds and runs the company's AI/automation systems.
+<One paragraph on the business: what it sells, to whom, which markets/languages.>
+
+## Brands & markets
+- **<brand-a>**: <language>, <market>
+- **<brand-b>**: <language>, <market>
+
+Customer personas: <who buys, roughly what share, what they care about>
+
+## Stack
+
+| Layer | Tool |
+|---|---|
+| Workflow engine | n8n (interact via MCP, not the UI) |
+| Messaging | <WhatsApp BSP> |
+| CRM | <CRM> |
+| AI text | <primary model> (primary), <fallback model> (fallback) |
+| CMS | <CMS> |
+| Project mgmt | <tool> |
+
+## Conventions
+
+### Workflow naming
+`<Purpose> | <Source>>><Target> | <Variant?> | <Language>`
+When duplicating to improve, append `v2`, `v3`. Never overwrite.
+
+### Time zone
+Always `<Region/City>` for schedule triggers.
+
+### Status values
+<The exact status strings your boards/CRM use, and the standard claim → process → release flow.>
+
+## Confirmed resource IDs
+
+| ID | Name | Type | Used for |
+|---|---|---|---|
+| `<id>` | <name> | <credential type> | <what> |
+
+(IDs only. Never secrets.)
+
+## Working preferences
+- **MCP over UI.** Build and edit workflows via MCP.
+- **MCP fails → REST, immediately.** Don't retry the failing tool.
+- **PUT to an ACTIVE workflow is ignored.** Deactivate → PUT → activate → GET-verify.
+- **Validate before create.** Run offline validation, then create.
+- **Create inactive.** The user activates after testing.
+- **Preserve prompts verbatim** when duplicating. Don't paraphrase, "improve" or translate.
+- **Audit, then confirm.** List bugs and improvements first, get an explicit GO, then build.
+
+## Known platform bugs to check for
+1. <bug pattern, with how to spot it>
+2. <...>
+
+## Definition of done
+A fix is NOT done until it's proven live:
+1. Change saved, verified by GET, not by the tool's success message
+2. Reactivated if it was active
+3. Live E2E run with a fake identity
+4. Execution ID + resulting record in the report
+5. Test data deleted
+
+If any step fails, report the failure. Never report success on a replay or dry run alone.
+
+## Data queries: never trust defaults
+Explicit `limit` + pagination on every query. Before analysing, state
+"retrieved N of M available". If they differ, stop and report.
+
+## Debugging
+Before declaring a root cause, list every assumption it depends on and mark each
+VERIFIED (with evidence) or UNVERIFIED. Ask about the UNVERIFIED ones.
+
+## Language
+Reply in the language of the user's most recent message. Technical content stays English.
+
+## Updating this file
+Stable facts only. In-flight projects go to memory. Promote a convention here
+after it has been used ~3 times.
