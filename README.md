@@ -1,6 +1,6 @@
 # Claude Code for Automation Engineers
 
-**How I run a production automation stack (100+ n8n workflows, WhatsApp AI agents, Salesforce, LLM pipelines) with Claude Code as my day-to-day engineering partner, and the guardrails that keep it from breaking things.**
+**How I run a production automation stack (150+ n8n workflows, WhatsApp AI agents, Salesforce, LLM pipelines) with Claude Code as my day-to-day engineering partner, and the guardrails that keep it from breaking things.**
 
 Most Claude Code content is about writing application code in a repo. My work is different: the "codebase" is a live automation platform, every change hits real customers, and much of the work runs through APIs and MCP servers instead of files.
 
